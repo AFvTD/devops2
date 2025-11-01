@@ -3,6 +3,13 @@ function isEmail(email){
   return emailRegex.test(email);
 }
 
+function isPasswordValid(password){
+  if(password == "root1234"){
+    return true;
+  }
+  return false;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("loginForm");
   if (!form) return;
@@ -11,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const data = new FormData(form);
     const email = data.get("email");
-    isEmail(email) ? alert(`Zalogowano jako: ${email}`) : alert("Nieprawidłowy adres email");
+    const password = data.get("password");
+    isEmail(email) && isPasswordValid(password) ? alert(`Zalogowano jako: ${email}`) : alert("Nieprawidłowy adres email");
   });
 });
